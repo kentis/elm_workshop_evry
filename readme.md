@@ -34,7 +34,7 @@ Install using node package manager
 $ npm install -g elm
 ``` 
 
-##2. Create a new elm application##
+## 2. Create a new elm application
 
 Create a new folder. Inside the folder create a file called elm-package.json. Edit elm-package.json to include the following:
 
@@ -91,7 +91,7 @@ This is a Elm module that contains five functions.
 
 - subscriptions: The subscriptions method allows subscribing to events. For now, we have no subscriptions.
 
-###Verification###
+### Verification
 
 In the directory of the application, run the command
 
@@ -101,7 +101,7 @@ elm-reactor
 
 Then go to ```http://localhost:8000``` and click on Main.elm. The applicatino should now download dependencies and compile. After a while, you should se the text "Hello Elm" in the browser.
 
-##3. Add Pallette##
+## 3. Add Pallette
 
 The pallette allows the user to chose which element he should be added. In our Petri Net example we hve two node types: places and transitions. Furthermore, we have arcs to bind places and transistions together.
 
@@ -249,10 +249,10 @@ view model =
 The main function is mostly the same as before except that the update function now comes from the Update module. The init function is expanded to support the new Model type from the Types module. Finally we have have changed the view function so that it now creates a div whose content is given by the pallette function from the Pallette moule.
 
 
-###Verification###
+### Verification
 Repeat the verification steps from step 3. You should now be able to see the pallete and select elements in it. To alter the elements vavailable, simply change the init function to contain other elements in the pallete.
 
-##4. Add Editor##
+## 4. Add Editor
 
 Finally, we vill create the editor where we will draw elements from the pallette. This first step is to alter the Types module so that the model knows about the editor and the elements that should be drawn on it and so that events from the editor can be handeld. The types mudules could be modified like below:
 
@@ -483,5 +483,5 @@ view model =
 
 In the init method, we have added a node type to the elements in the pallet. Furthermore, we have added the definition of the editor to the Model record returned by init. The  editor is placed at x=110 and y=10 and is given 1000 pixels in height and 1200 pixels in width. In the view function, we now, in addition to calling the pallette function, call the editor finction and let the result be the second element of the list which is the second argument to the div section. This makes the editor to be rendered as a part of the div created by the div finction in view.
 
-###Verification###
+### Verification
 Repeat the verification steps from step 3. You should now be able to add new nodes to the editor by first selecting a node type on the pallette and then clicking on the editor to plce the node.
