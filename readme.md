@@ -1,5 +1,4 @@
-Elm SVG editor tutorial 
-=======================
+#Elm SVG editor tutorial 
 
 ##Outline
 
@@ -15,7 +14,7 @@ TODO: insert image of application with a simple petri net drawn?
 4. Add Editor
 5. Add Arcs
 
-###Bonus tasks#
+###Bonus tasks
 
 1. Dragging nodes
 2. Resize nodes
