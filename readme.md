@@ -1,6 +1,6 @@
-#Elm SVG editor tutorial 
+# Elm SVG editor tutorial 
 
-##Outline
+## Outline
 
 
 In this tutorial we will create a simple graph net editor using ELM and SVG. We will be able to place to types of nodes on a canvas and draw arcs between them. The editor will be useable as a very simple Petri Net editor.
@@ -14,7 +14,7 @@ TODO: insert image of application with a simple petri net drawn?
 4. Add Editor
 5. Add Arcs
 
-###Bonus tasks
+### Bonus tasks
 
 1. Dragging nodes
 2. Resize nodes
@@ -22,7 +22,7 @@ TODO: insert image of application with a simple petri net drawn?
 
 
 
-##1. Install Elm and prerequisites
+## 1. Install Elm and prerequisites
 1. Install elm:
 Either: 
 
