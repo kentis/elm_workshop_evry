@@ -105,8 +105,22 @@ Then go to ```http://localhost:8000``` and click on Main.elm. The applicatino sh
 
 The pallette allows the user to chose which element he should be added. In our Petri Net example we hve two node types: places and transitions. Furthermore, we have arcs to bind places and transistions together.
 
-First, we need to define some types. For simplicity and to avoid any future circular dependencies, we create the type definitions in a sperate module. To do this, crrate a file called Types.elm with the following content
+- Msg which is a union type that, for now, has a single element "SelectElement Int". This type includes the messages that are used in the pallication.
+- PalletteDef which is a record type with the following elelements
+  - x, an integer that says where on the x-axis the pallette should be placed
+  - y, an integer that syas where on the y-axis the pallette should be placed
+  -height and width, integers that define the height and width of the pallette
+  - elements: a list of PalletteElement records
+-PalletteElement which is a record type that is used to descibe the indivual elements of the pallette and contains
+  - id: And integer that is used to uniquely identify the elelement
+  - text: the displayed text whwn this element is rendered
+  - selected: a flag indicating wether the current element is selectedd.
+- Model: is a record type which is used as the model for our application. For now, the model contains a single element:
+  - pallette, a PalletteDef which is the definition of the pallette to be used in the application.
 
+<details>
+<summary>Example</summary>
+<p>
 ```
 module Types exposing (..)
 
@@ -134,14 +148,21 @@ type alias Model =
     pallette: PalletteDef
   }
 ```
+</p>
+</details>
 
-This created a single Union type called Msg and several record types. The Msg union type contains a single element SelectElement which is tagged with an Int. This type is used to send messages to the update function based on events such as from the UI.
 
-The next type, which is a record type, nameds PalletteDef is the definition of a pallette. It contains an x and y that is used to position the pallette as well as the height and width of the pallette. Finally the record contains a list og PalletteElements called elements.
+<!-- This created a single Union type called Msg and several record types. The Msg union type contains a single element SelectElement which is tagged with an Int. This type is used to send messages to the update function based on events such as from the UI.
 
-The PalletteElement type is defined
+The next type, which is a record type, named PalletteDef is the definition of a pallette. It contains an x and y that is used to position the pallette as well as the height and width of the pallette. Finally the record contains a list og PalletteElements called elements.
 
-Then we create a new file Pallette.elm with the following content
+The PalletteElement type is defined -->
+
+We also create a new module called Pallette in the  Pallette.elm. This module wil be responsible for rendering the pallette. The module should expose a function with the following signature ```pallette: Model -> Html Msg``` which is responsible for rendering a pallette. The pallette should be rendered a list of pallette elements wich is absolutely positoned according to the pallette element in the model. Each pallette element should be rendered as an element in the list representing the pallette. Each element sould be selcteable, which means that there should be som indicaition, such as a background color change, of wether an element is selected. Furtermore, cliks on a pallette elements should send a SelectElement message with the id of the element that has been clicked.   
+
+<details>
+<summary>Example</summary>
+<p>
 
 ```
 module Pallette exposing (pallette)
@@ -178,11 +199,16 @@ getElementStyle element =
         )
     ]
 ```
+</p>
+</dedtails>
 
-This creates the module Pallette that exposes the function pallette. The pallette function creates a ul Html element that contains one item for each pallette element from the model. This is achieved by using the List.map function in line XX that calls the renderElement function on each item in the list given by model.pallette.elements and retuns a list of the results of the renderElement function.
+<!-- This creates the module Palette that exposes the function pallette. The pallette function creates a ul Html element that contains one item for each pallette element from the model. This is achieved by using the List.map function in line XX that calls the renderElement function on each item in the list given by model.pallette.elements and retuns a list of the results of the renderElement function. -->
 
-Next, we will create a module called Update that will contain the update method that is sent to the Elm framework in the main function. The update function will enable us to select pallette elements. The Update module can be implemented as below.
+We also need a module called Update that will contain the update method that is sent to the Elm framework in the main function. The update function will enable us to select palette elements. The Update module can be implemented as below.
 
+<details>
+<summary>Example</summary>
+<p>
 ```
 module Update exposing (update)
 import Types exposing (..)
@@ -202,7 +228,8 @@ selectInPallette pallette id =
         {x | selected = False}
     )  pallette.elements)}
 ```
-
+</p>
+</details>
 The update function contails a switch statement over the Msg type which, for now, only contains the SelectElement value. This will be expanded later, however, for now, the case statement in the update function only hase a single case which selects a pallette element. To do this we use a syntactic trick where we create a new model by taking all the fields in the model except from the pallette which is generated by the selectInPallette function. This dunction uses the same syntactic trick together with the List.map function to select the element which id is given as a paramter to the function.
 
 Finally, we need to modify the Main module as shown below:
