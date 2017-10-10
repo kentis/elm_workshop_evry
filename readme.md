@@ -8,8 +8,7 @@ In this tutorial we will create a simple graph net editor using ELM and SVG. We 
 TODO: insert image of application with a simple petri net drawn?
 
 
-1. Install Elm prerequisites
-2. Create new Application
+1. Install Elm and create a new application
 3. Add palette
 4. Add Editor
 
@@ -22,7 +21,7 @@ TODO: insert image of application with a simple petri net drawn?
 
 
 
-## 1. Install Elm and prerequisites
+## 1. Install Elm and create a new application
 1. Install elm:
 Either: 
 
@@ -34,11 +33,10 @@ Install using node package manager
 $ npm install -g elm
 ``` 
 
-## 2. Create a new elm application
 
 Create a new folder. Inside the folder create a file called elm-package.json. Edit elm-package.json to include the following:
 
-```
+```json
 {
     "version": "0.0.1",
     "summary": "A very simple petri net editor",
@@ -60,7 +58,7 @@ This files tells the elm compiler and other tools that the elm files reside in t
 
 Create a new file in the same directory called Main.elm with the following content:
 
-```
+```elm
 module Main exposing (..)
 import Html exposing (programWithFlags, h1, text)
 
@@ -74,9 +72,7 @@ update msg model = (model, Cmd.none)
 subscriptions model = Sub.none
 
 view model =
-  h1 [][text "Hello Elm"] 
-
-
+  h1 [][text "Hello Elm"]
 ```
 
 This is a Elm module that contains five functions.
@@ -93,13 +89,9 @@ This is a Elm module that contains five functions.
 
 ### Verification
 
-In the directory of the application, run the command
+In the directory of the application, run the command `elm-reactor`
 
-```
-elm-reactor
-````
-
-Then go to ```http://localhost:8000``` and click on Main.elm. The applicatino should now download dependencies and compile. After a while, you should se the text "Hello Elm" in the browser.
+Then go to <http://localhost:8000> and click on Main.elm. The applicatino should now download dependencies and compile. After a while, you should se the text "Hello Elm" in the browser.
 
 ## 3. Add Pallette
 
@@ -123,7 +115,7 @@ The pallette allows the user to chose which element he should be added. In our P
 <details>
 <summary>Example</summary>
 
-```elm
+<pre><code>
 
 module Types exposing (..)
 
@@ -151,7 +143,7 @@ type alias Model =
     pallette: PalletteDef
   }
 
-```
+</pre></code>
 
 </details>
 
@@ -162,12 +154,12 @@ The next type, which is a record type, named PalletteDef is the definition of a 
 
 The PalletteElement type is defined -->
 
-We also create a new module called Pallette in the  Pallette.elm. This module wil be responsible for rendering the pallette. The module should expose a function with the following signature ```pallette: Model -> Html Msg``` which is responsible for rendering a pallette. The pallette should be rendered a list of pallette elements wich is absolutely positoned according to the pallette element in the model. Each pallette element should be rendered as an element in the list representing the pallette. Each element sould be selcteable, which means that there should be som indicaition, such as a background color change, of wether an element is selected. Furtermore, cliks on a pallette elements should send a SelectElement message with the id of the element that has been clicked.   
+We also create a new module called Pallette in the  Pallette.elm. This module wil be responsible for rendering the pallette. The module should expose a function with the following signature ```pallette: Model -> Html Msg``` which is responsible for rendering a pallette. The pallette should be rendered a list of pallette elements wich is absolutely positoned according to the pallette element in the model. Each pallette element should be rendered as an element in the list representing the pallette. Each element sould be selcteable, which means that there should be som indicaition, such as a background color change, of wether an element is selected. Furtermore, cliks on a pallette elements should send a SelectElement message with the id of the element that has been clicked.
 
 <details>
 <summary>Example</summary>
 
-```elm
+<pre><code>elm
 
 module Pallette exposing (pallette)
 import Html exposing (..)
@@ -203,7 +195,7 @@ getElementStyle element =
         )
     ]
 
-```
+</pre></code>
 
 </details>
 
