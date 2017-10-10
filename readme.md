@@ -23,7 +23,7 @@ TODO: insert image of application with a simple petri net drawn?
 
 ## 1. Install Elm and create a new application
 1. Install elm:
-Either: 
+Either:
 
 choose an installer at: https://guide.elm-lang.org/install.html
 
@@ -114,9 +114,7 @@ The pallette allows the user to chose which element he should be added. In our P
 
 <details>
 <summary>Example</summary>
-
-<pre><code>
-
+<pre><code class="code highlight js-syntax-highlight elm dark" lang="elm">
 module Types exposing (..)
 
 type Msg = 
@@ -142,7 +140,6 @@ type alias Model =
   {
     pallette: PalletteDef
   }
-
 </pre></code>
 
 </details>
@@ -159,8 +156,7 @@ We also create a new module called Pallette in the  Pallette.elm. This module wi
 <details>
 <summary>Example</summary>
 
-<pre><code>elm
-
+<pre><code lang="elm">
 module Pallette exposing (pallette)
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -194,7 +190,6 @@ getElementStyle element =
                         "white"
         )
     ]
-
 </pre></code>
 
 </details>
