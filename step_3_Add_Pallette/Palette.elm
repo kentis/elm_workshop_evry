@@ -1,27 +1,27 @@
-module Pallette exposing (pallette)
+module Palette exposing (palette)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Types exposing (..)
 
-pallette model =
+palette model =
     ul [Html.Attributes.style [ ("position", "absolute")
-                              , ("left", ((toString model.pallette.x)++"px"))
-                              , ("top", ((toString model.pallette.y)++"px"))
-                              , ("width", ((toString model.pallette.width)++"px"))
-                              , ("height", ((toString model.pallette.height)++"px"))
+                              , ("left", ((toString model.palette.x)++"px"))
+                              , ("top", ((toString model.palette.y)++"px"))
+                              , ("width", ((toString model.palette.width)++"px"))
+                              , ("height", ((toString model.palette.height)++"px"))
                               , ("margin", "0")
                               , ("padding", "0")
                               , ("text-align", "left")
                               , ("border-right","solid")]
        ]
-       (List.map renderElement model.pallette.elements)
+       (List.map renderElement model.palette.elements)
 
-renderElement : PalletteElement -> Html Msg
+renderElement : PaletteElement -> Html Msg
 renderElement element =
     li [style (getElementStyle element), onClick (SelectElement element.id) ] [ text element.text ]
 
-getElementStyle : PalletteElement -> List (String, String)
+getElementStyle : PaletteElement -> List (String, String)
 getElementStyle element =
     [
         ("background-color", case element.selected of

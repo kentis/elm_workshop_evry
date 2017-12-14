@@ -3,16 +3,16 @@ module Types exposing (..)
 type Msg = 
   SelectElement Int
 
-type alias PalletteDef = 
+type alias PaletteDef = 
   {
     x: Int
     , y: Int
     , height: Int
     , width: Int
-    , elements: List PalletteElement
+    , elements: List PaletteElement
   }
 
-type alias PalletteElement =
+type alias PaletteElement =
   { 
     id : Int
   , text: String
@@ -21,5 +21,5 @@ type alias PalletteElement =
 
 type alias Model = 
   {
-    pallette: PalletteDef
+    palette: PaletteDef
   }

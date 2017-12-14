@@ -9,16 +9,16 @@ type NodeType =
   Place
   | Transition
 
-type alias PalletteDef = 
+type alias PaletteDef = 
   {
     x: Int
     , y: Int
     , height: Int
     , width: Int
-    , elements: List PalletteElement
+    , elements: List PaletteElement
   }
 
-type alias PalletteElement =
+type alias PaletteElement =
   { 
     id : Int
   , text: String
@@ -45,7 +45,7 @@ type alias NodeDef =
 
 type alias Model = 
   {
-    pallette: PalletteDef
+    palette: PaletteDef
     , editor: EditorDef
     , nodes: List NodeDef
   }

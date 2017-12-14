@@ -1,6 +1,6 @@
 module Main exposing (..)
 import Html exposing (programWithFlags, h1, text, div)
-import Pallette exposing (pallette)
+import Palette exposing (palette)
 import Types exposing (..)
 import Update exposing(update)
 import Editor exposing(editor)
@@ -8,7 +8,7 @@ main =
     Html.program { view = view, init = init, update = update, subscriptions = subscriptions }
 
 init = ({ 
-  pallette = {
+  palette = {
     x=10
     , y=10
     , height = 500
@@ -41,6 +41,6 @@ subscriptions model = Sub.none
 
 view model = 
   div [][
-       pallette model
+       palette model
        ,editor model
    ]  
