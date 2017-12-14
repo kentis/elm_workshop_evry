@@ -151,12 +151,14 @@ The next type, which is a record type, named PalletteDef is the definition of a 
 
 The PalletteElement type is defined -->
 
-We also create a new module called Pallette in the  Pallette.elm. This module wil be responsible for rendering the pallette. The module should expose a function with the following signature ```pallette: Model -> Html Msg``` which is responsible for rendering a pallette. The pallette should be rendered a list of pallette elements wich is absolutely positoned according to the pallette element in the model. Each pallette element should be rendered as an element in the list representing the pallette. Each element sould be selcteable, which means that there should be som indicaition, such as a background color change, of wether an element is selected. Furtermore, cliks on a pallette elements should send a SelectElement message with the id of the element that has been clicked.
+We also create a new module called Pallette in the  Pallette.elm. This module wil be responsible for rendering the pallette. 
+
+The module should expose a function with the following signature ```pallette: Model -> Html Msg``` which is responsible for rendering a pallette. The pallette should be rendered a list of pallette elements wich is absolutely positoned according to the pallette element in the model. Each pallette element should be rendered as an element in the list representing the pallette. Each element sould be selcteable, which means that there should be som indicaition, such as a background color change, of wether an element is selected. Furtermore, cliks on a pallette elements should send a SelectElement message with the id of the element that has been clicked.
 
 <details>
 <summary>Example</summary>
 
-<pre><code lang="elm">
+<pre><code class="code highlight js-syntax-highlight elm dark" lang="elm">
 module Pallette exposing (pallette)
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -202,7 +204,7 @@ We also need a module called Update that will exposes the update method that is 
 <details>
 <summary>Example</summary>
 
-```elm
+<pre><code class="code highlight js-syntax-highlight elm dark" lang="elm">
 
 module Update exposing (update)
 import Types exposing (..)
@@ -222,7 +224,7 @@ selectInPallette pallette id =
         {x | selected = False}
     )  pallette.elements)}
 
-```
+</code></pre>
 
 </details>
 
@@ -233,7 +235,7 @@ Finally, we the Main module should be modified by adding a pallette and a couple
 <details>
 <summary>Example</summary>
 
-```elm
+<pre><code class="code highlight js-syntax-highlight elm dark" lang="elm">
 
 module Main exposing (..)
 import Html exposing (programWithFlags, h1, text, div)
@@ -272,7 +274,7 @@ view model =
        pallette model
    ]
 
-```
+</code></pre>
 
 </details>
 <!-- 
@@ -290,8 +292,7 @@ In this section , we vill create the editor where we will draw elements from the
 <details>
   <summary>Example</summary>
 
-```elm
-
+<pre><code class="code highlight js-syntax-highlight elm dark" lang="elm">
 module Types exposing (..)
 import Mouse exposing (Position)
 
@@ -342,7 +343,7 @@ type alias Model =
     , editor: EditorDef
     , nodes: List NodeDef
   }
-```
+</code></pre>
 
 </details>
 
@@ -355,8 +356,7 @@ Now that we have the required types in place, we now need to create a new module
 <details>
 <summary>Eksempel</summary>
 
-```elm
-
+<pre><code class="code highlight js-syntax-highlight elm dark" lang="elm">
 module Editor exposing (editor)
 import Html exposing (..)
 import Svg exposing (..)
@@ -413,7 +413,7 @@ onEditorClick:  Html.Attribute Msg
 onEditorClick  =
     onWithOptions "click" {stopPropagation=True, preventDefault=True}  (Decode.map (ApplyTool) Mouse.position)
 
-```
+</code></pre>
 
 </details>
 
@@ -426,8 +426,7 @@ We also need to make some changes to the Update module. In this module we expand
 <details>
 <summary>Example</summary>
 
-```elm
-
+<pre><code class="code highlight js-syntax-highlight elm dark" lang="elm">
 module Update exposing (update)
 import Types exposing (..)
 import Mouse exposing (Position)
@@ -470,7 +469,7 @@ selectInPallette pallette id =
         {x | selected = False}
     )  pallette.elements)}
 
-```
+</code></pre>
 
 </details>
 
@@ -479,8 +478,7 @@ Finally we update the Main module to use the editor. The init method should be u
 <details>
 <summary>Example</summary>
 
-```elm
-
+<pre><code class="code highlight js-syntax-highlight elm dark" lang="elm">
 module Main exposing (..)
 import Html exposing (programWithFlags, h1, text, div)
 import Pallette exposing (pallette)
@@ -527,7 +525,7 @@ view model =
        pallette model
        ,editor model
    ]
-```
+</code></pre>
 
 </details>
 
