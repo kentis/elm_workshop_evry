@@ -11,9 +11,8 @@ In this tutorial we will create a simple graph editor using ELM and SVG. We will
 
 ### Bonus tasks
 
-1. Add arcs
-2. Dragging nodes
-3. Resize nodes
+1. Dragging nodes
+2. Resize nodes
 
 
 
@@ -548,3 +547,6 @@ Finally, the Main module should be altered so that the initial Model reflect the
 ## Bonus tasks
 
 An example of how the bonus tasks could be implemented, is available at: <https://gitlab.com/kentis/elm-pn-editor>
+
+##Tilbakemeldinger
+Tilbakemeldinger mottas med takk enten direkte til deres ydmyke presantør eller på https://goo.gl/forms/TyqF0drtBDO2beJR2
