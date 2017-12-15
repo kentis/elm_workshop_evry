@@ -524,6 +524,8 @@ view model =
 
 </details>
 
+In order to run the new code, two more dependencies should be added to the file elm-package.json. Add the following lines to the `dependencies` section: `"elm-lang/mouse": "1.0.1 <= v < 2.0.0"` and `"elm-lang/svg": "2.0.0 <= v < 3.0.0"`.
+
 <!-- 
 In the init method, we have added a node type to the elements in the pallet. Furthermore, we have added the definition of the editor to the Model record returned by init. The  editor is placed at x=110 and y=10 and is given 1000 pixels in height and 1200 pixels in width. In the view function, we now, in addition to calling the palette function, call the editor function and let the result be the second element of the list which is the second argument to the div section. This makes the editor to be rendered as a part of the div created by the div function in view. -->
 
@@ -533,7 +535,7 @@ Repeat the verification steps from step 3. You should now be able to add new nod
 
 ## 5. Add Arcs
 
-Finally we will add arcs to the graph editor. This section will contain somewhat less detailed instructions than the previous sections. For an example of how this could be done, see the step_5_Add_Arcs directory.
+Finally we will add arcs to the graph editor. This section will contain somewhat less detailed instructions than the previous sections. For an example of how this could be done see the step_5_Add_Arcs directory.
 
 We will need to change the Types, Update, Editor and Main modules. The Types module should be updated to include a type alias for arcs. The Msg type should be altered so that it is possible to catch a node that is clicked. And also the Model type should include a list of arcs and information on which source has been selected for new arcs.
 
