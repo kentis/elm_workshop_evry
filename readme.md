@@ -2,12 +2,12 @@
 
 ## Outline
 
-In this tutorial we will create a simple graph editor using ELM and SVG. We will be able to place two types of nodes on a canvas: places and transitions. Places are represented by circles and transitions are represented by rectangles. With the addition of arcs, the editor could be used as a very simple Petri-Net editor.
+In this tutorial we will create a simple graph editor using ELM and SVG. We will be able to place two types of nodes on a canvas: places and transitions. Places are represented by circles and transitions are represented by rectangles. The resulting editor could be used as a very simple Petri-Net editor.
 
 1. Install Elm and create a new application
 3. Add palette
 4. Add Editor
-
+5. Add Arcs
 
 ### Bonus tasks
 
@@ -530,6 +530,20 @@ In the init method, we have added a node type to the elements in the pallet. Fur
 
 ### Verification
 Repeat the verification steps from step 3. You should now be able to add new nodes to the editor by first selecting a node type on the palette and then clicking on the editor to place the node on the editor.
+
+
+## 5. Add Arcs
+
+Finally we will add arcs to the graph editor. This section will contain somewhat less detailed instructions than the previous sections. For an example of how this could be done, see the step_5_Add_Arcs directory.
+
+We will need to change the Types, Update, Editor and Main modules. The Types module should be updated to include a type alias for arcs. The Msg type should be altered so that it is possible to catch a node that is clicked. And also the Model type should include a list of arcs and information on which source has been selected for new arcs.
+
+The Update class should be altered to handle creation of new arcs and add them to the arcs list in the Model.
+
+In the Editor we need to add arcs to the list of SVG elements that are rendered. This could be done similar to how
+we rendered the individual nodes in the editor.
+
+Finally, the Main module should be altered so that the initial Model reflect the changes to the Model type alias.
 
 ## Bonus tasks
 
